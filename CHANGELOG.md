@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## [v0.0.1](https://github.com/tenthrtyam/container-terraform/releases/tag/v0.0.1)
+## [v0.0.1](https://gitlab.eng.vmware.com/sydney/containers/terraform/releases/tag/v0.0.1)
 
 > Release Date: 2023/03/17
 
