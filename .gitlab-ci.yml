@@ -11,7 +11,7 @@ build:
     - echo "{\"auths\":{\"${HARBOR_HOST}\":{\"username\":\"${HARBOR_USER}\",\"password\":\"${HARBOR_PASSWORD}\",\"email\":\"${HARBOR_EMAIL}\",\"auth\":\"${AUTH}\"}}}" > /kaniko/.docker/config.json
   variables:
     LABEL_PREFIX: "com.vmware.eocto"
-    IMAGE_NAME: "hugo"
+    IMAGE_NAME: "terraform"
     IMAGE_TAG: "dev"
   script:
     - /kaniko/executor
