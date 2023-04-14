@@ -2,7 +2,7 @@ FROM photon:4.0
 
 # set argument defaults
 ARG OS_ARCH="amd64"
-ARG TERRAFORM_VERSION="1.2.7"
+ARG TERRAFORM_VERSION="1.4.5"
 #ARG LABEL_PREFIX=com.vmware.eocto
 
 # add metadata via labels
