@@ -3,6 +3,10 @@ FROM photon:5.0
 # set argument defaults
 ARG OS_ARCH="amd64"
 ARG TERRAFORM_VERSION="1.4.5"
+ARG USER=vlabs
+ARG USER_ID=1000
+ARG GROUP=users
+ARG GROUP_ID=100
 #ARG LABEL_PREFIX=com.vmware.eocto
 
 # add metadata via labels
@@ -13,20 +17,34 @@ ARG TERRAFORM_VERSION="1.4.5"
 #LABEL ${LABEL_PREFIX}.maintainer.email="rcroft@vmware.com"
 #LABEL ${LABEL_PREFIX}.maintainer.url="https://gitlab.eng.vmware.com/rcroft/"
 #LABEL ${LABEL_PREFIX}.released="9999-99-99"
-#LABEL ${LABEL_PREFIX}.based-on="photon:4.0"
-#LABEL ${LABEL_PREFIX}.project="commonpool"
-
-# set working to user's home directory
-WORKDIR ${HOME}
+#LABEL ${LABEL_PREFIX}.based-on="photon:5.0"
+#LABEL ${LABEL_PREFIX}.project="containers"
 
 # update repositories, install packages, and then clean up
 RUN tdnf update -y && \
-    tdnf install -y wget tar git unzip && \
-    wget -q https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_${OS_ARCH}.zip && \
-    unzip -o -d /usr/local/bin/ terraform_${TERRAFORM_VERSION}_linux_${OS_ARCH}.zip && \
-    rm terraform_${TERRAFORM_VERSION}_linux_${OS_ARCH}.zip && \
-    tdnf erase -y unzip && \
+    # grab what we can via standard packages
+    tdnf install -y ca-certificates curl diffutils git shadow tar unzip && \
+    # add user/group
+    useradd -u ${USER_ID} -m ${USER} && \
+    chown -R ${USER_ID}:${GROUP_ID} /home/${USER} && \
+    # add /workspace and give user permissions
+    mkdir -p /workspace && \
+    chown -R ${USER_ID}:${GROUP_ID} /workspace && \
+    # set git config
+    echo -e "[safe]\n\tdirectory=/workspace" > /etc/gitconfig && \
+    # grab terraform
+    curl -skSLo terraform.zip https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_${OS_ARCH}.zip && \
+    unzip -o -d /usr/local/bin/ terraform.zip && \
+    rm -f terraform.zip && \
+    # clean up
+    tdnf erase -y unzip shadow && \
     tdnf clean all
+
+# set user
+USER ${USER}
+
+# set working directory
+WORKDIR /workspace
 
 # set entrypoint to terraform, not a shell
 ENTRYPOINT ["terraform"]
