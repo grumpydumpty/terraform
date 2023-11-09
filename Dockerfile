@@ -2,7 +2,7 @@ FROM photon:5.0
 
 # set argument defaults
 ARG OS_ARCH="amd64"
-ARG TERRAFORM_VERSION="1.4.5"
+ARG TERRAFORM_VERSION="1.6.3"
 ARG USER=vlabs
 ARG USER_ID=1280
 ARG GROUP=users
