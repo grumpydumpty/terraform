@@ -2,7 +2,6 @@ FROM photon:5.0
 
 # set argument defaults
 ARG OS_ARCH="amd64"
-ARG TERRAFORM_VERSION="1.6.3"
 ARG USER=vlabs
 ARG USER_ID=1280
 ARG GROUP=users
@@ -23,7 +22,7 @@ ARG GROUP_ID=100
 # update repositories, install packages, and then clean up
 RUN tdnf update -y && \
     # grab what we can via standard packages
-    tdnf install -y ca-certificates curl diffutils git shadow tar unzip && \
+    tdnf install -y ca-certificates coreutils curl diffutils git jq shadow tar unzip && \
     # add user/group
     useradd -u ${USER_ID} -g ${GROUP} -m ${USER} && \
     chown -R ${USER}:${GROUP} /home/${USER} && \
@@ -33,6 +32,7 @@ RUN tdnf update -y && \
     # set git config
     echo -e "[safe]\n\tdirectory=/workspace" > /etc/gitconfig && \
     # grab terraform
+    TERRAFORM_VERSION=$(curl -H 'Accept: application/json' -sSL https://github.com/hashicorp/terraform/releases/latest | jq -r '.tag_name' | tr -d 'v') && \
     curl -skSLo terraform.zip https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_${OS_ARCH}.zip && \
     unzip -o -d /usr/local/bin/ terraform.zip && \
     rm -f terraform.zip && \
