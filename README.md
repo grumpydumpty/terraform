@@ -1,5 +1,7 @@
 # Container Image for HashiCorp Terraform
 
+![](logo.png)
+
 ## Overview
 
 Provides a container image for running HashiCorp Terraform.
