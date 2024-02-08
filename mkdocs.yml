@@ -1,7 +1,7 @@
 # Project Information
 site_name: Terraform
 site_description: Docker container with all the tools you need to work with Hashicorp Terraform.
-site_url: http://containers.lab.net/terraform/
+site_url: http://terraform.lab.net
 site_author: Broadcom
 docs_dir: docs
 site_dir: .site
