@@ -1,20 +1,19 @@
 # Project Information
 site_name: Terraform
 site_description: Docker container with all the tools you need to work with Hashicorp Terraform.
-site_url: http://containers.lab.net/terraform
-site_author: Broadcom
+site_url: https://grumpydumpty.github.io/terraform
+site_author: Grumpy Dumpty
 docs_dir: docs
 site_dir: .site
 use_directory_urls: true
 
 # Repository
-repo_url: https://gitlab.eng.vmware.com/sydney/containers/terraform
-edit_uri: -/blob/main/docs
+repo_url: https://github.com/grumpydumpty/terraform
+edit_uri: blob/main/docs
 
 # Copyright
 copyright: |
-  Copyright &copy; 2005-2024 Broadcom. All rights reserved.<br/>
-  The term “Broadcom” refers to Broadcom Inc. and/or its subsidiaries.<br/><br/>
+  Copyright &copy; 1970-2024 Grumpy Dumpty. All rights reserved.<br/><br/>
 
 # Configuration
 theme:
@@ -80,19 +79,16 @@ plugins:
 
 # Customization
 extra:
-  config:
-    repo_url: https://gitlab.eng.vmware.com/sydney/containers/terraform
-    repo_url_raw: https://gitlab.eng.vmware.com/sydney/containers/terraform/-/raw/main
   version:
     default: latest
     provider: mike
   social:
-    - icon: fontawesome/brands/gitlab
-      link: https://gitlab.eng.vmware.com/sydney/containers/terraform
+    - icon: fontawesome/brands/github
+      link: https://github.com/grumpydumpty/terraform
     - icon: fontawesome/solid/book
-      link: http://containers.lab.net/terraform/
+      link: https://grumpydumpty.github.io/terraform/
     - icon: fontawesome/solid/code
-      link: https://gitlab.eng.vmware.com/sydney/containers/terraform/docs
+      link: https://github.com/grumpydumpty/terraform/docs
 extra_css:
   - assets/stylesheets/extra.css
   - assets/stylesheets/spanable.css
@@ -137,13 +133,13 @@ nav:
   - GitLab CI/CD: gitlab-ci.md
   - Harbor Repo: harbor.md
   - Release Notes: release-notes.md
-  - Release Milestones: https://gitlab.eng.vmware.com/sydney/containers/terraform/-/milestones
+  - Release Milestones: https://github.com/grumpydumpty/terraform/milestones
   - License: license.md
 - Community:
   - community/index.md
   - Contributing: community/contributing.md
-  - Discussions: https://gitlab.eng.vmware.com/sydney/containers/terraform/activity
-  - Search Issues: https://gitlab.eng.vmware.com/sydney/containers/terraform/-/issues
-  - Open an Issue: https://gitlab.eng.vmware.com/sydney/containers/terraform/-/issues/new
+  - Discussions: https://github.com/grumpydumpty/terraform/discussions
+  - Search Issues: https://github.com/grumpydumpty/terraform/issues
+  - Open an Issue: https://github.com/grumpydumpty/terraform/issues/new
   - Support: community/support.md
   - Code of Conduct: community/code-of-conduct.md
