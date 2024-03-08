@@ -1,11 +1,14 @@
-# Components
+---
+title: Components
+draft: false
+date: 2022-01-31
+authors:
+  - grumpydumpty
+---
 
 This image includes the following components:
 
-| Component                        | Version | Description                                                                                              |
-|----------------------------------|---------|----------------------------------------------------------------------------------------------------------|
-| VMware Photon OS                 | 4.0     | A Linux container host optimized for vSphere and cloud-computing platforms.                              |
-| HashiCorp Terraform              | 1.2.7   | An open-source infrastructure-as-code software  to create, change, and improve infrastructure.           |
+<!-- DO NOT EDIT BELOW THIS LINE -->
 
 | Package/Tool                         | Version  |
 |--------------------------------------|----------|
