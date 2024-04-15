@@ -95,3 +95,7 @@ These can be set at any level but we generally set them at the group or project 
 ## Credits
 
 _Originally taken from here: [tenthirtyam/container-terraform](https://github.com/tenthirtyam/container-terraform/)_
+
+## Package Versions
+
+<!-- snip -->
