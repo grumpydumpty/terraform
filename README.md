@@ -99,3 +99,6 @@ _Originally taken from here: [tenthirtyam/container-terraform](https://github.co
 ## Package Versions
 
 <!-- snip -->
+| Package | Version |
+|---------|---------|
+| TERRAFORM | 1.8.0 |
