@@ -32,9 +32,9 @@ RUN tdnf update -y && \
     mkdir -p /workspace && \
     chown -R ${USER}:${GROUP} /workspace && \
     # set git config
-    echo -e "[safe]\n\tdirectory=/workspace" > /etc/gitconfig && \
+    git config --system --add safe.directory "/workspace" && \
     # grab terraform
-    TERRAFORM_VERSION=$(curl -H 'Accept: application/json' -sSL https://github.com/hashicorp/terraform/releases/latest | jq -r '.tag_name' | tr -d 'v') && \
+    export TERRAFORM_VERSION=$(curl -H 'Accept: application/json' -sSL https://github.com/hashicorp/terraform/releases/latest | jq -r '.tag_name' | tr -d 'v') && \
     curl -skSLo terraform.zip https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_${OS_ARCH}.zip && \
     unzip -o -d /usr/local/bin/ terraform.zip && \
     rm -f terraform.zip && \
