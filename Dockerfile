@@ -110,13 +110,6 @@ RUN TRIVY_VERSION=$(curl -H 'Accept: application/json' -sSL https://github.com/a
     chmod 0755 /usr/local/bin/trivy && \
     rm -f trivy.tar.gz
 
-# harden and remove unnecessary packages
-RUN chown -R root:root /usr/local/bin/ && \
-    chown root:root /var/log && \
-    chmod 0640 /var/log && \
-    chown root:root /usr/lib/ && \
-    chmod 755 /usr/lib/
-
 # switch back to non-root user
 USER ${USER}:${GROUP}
 
